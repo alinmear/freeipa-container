@@ -3,6 +3,9 @@ FROM armhf/fedora
 
 MAINTAINER Paul Steinlechner
 
+# armhf/fedora not updated baseimage is causing some failures --> first update it
+RUN yum update -y
+
 RUN mkdir -p /run/lock && dnf install -y freeipa-server freeipa-server-dns freeipa-server-trust-ad initscripts && dnf clean all
 
 # Workaround 1364139
